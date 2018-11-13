@@ -1,4 +1,4 @@
-# easy-pie-chart with Ajax and AWS DB
+# jQuery piechart with Ajax and AWS DB
 
 ### based on easy-pie-chart (jquery ver)
 
@@ -17,11 +17,13 @@ A RGB can be converted into a HSL. HSL is a method to describe a color with Hue,
 
 First of all, I saved some examples at my DataBase.
 
-<img src="img/db.png" height="150px"></img>
+<img width="239" alt="db" src="https://user-images.githubusercontent.com/39694718/48434817-2a0b8280-e7be-11e8-9137-745243e9d3d8.png">
+
 
 And Here is the db connect flow chart.
 
-<img src="img/dbconnect.png" height="120px"></img>
+![dbconnect](https://user-images.githubusercontent.com/39694718/48434830-37c10800-e7be-11e8-80a3-2e3537166e04.png)
+
 
 If you click "UPDATE CHART" button, the chart get a new random color's information(R,G,B and Lightness values) with ajax.
 
@@ -44,6 +46,11 @@ function update(){
     return;
 }
 ```
+### Result
+
+<http://13.125.250.182/easypiechart/main.html>
+
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/39694718/48434919-6b9c2d80-e7be-11e8-888e-c5ea471a0553.gif)
 
 ### How to change the chart
 
