@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<title>jQuery</title>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" type="text/css" href="style/css/mychart.css">
+</head>
+<body>
+    <div class="container">
+        <div class="color">
+            <div class="color-box">
+                <span style="color:red">red</span>
+                <span class="red">0</span>
+            </div>
+            <div class="color-box">
+                <span style="color:green">green</span>
+                <span class="green">0</span>
+            </div>
+            <div class="color-box">
+                <span style="color:blue">blue</span>
+                <span class="blue">0</span>
+            </div>
+        </div>
+        <span class="chart" data-percent="0">
+            <span class="percent"></span>
+        </span>
+        <div class="btn js_update">UPDATE CHART</div>
+    </div>
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="dist/jquey.easypiechart.js"></script>
+    <script>
+        $(function() {
+            $('.red').val("0");
+            $('.green').val("0");
+            $('.blue').val("0");
+            $('.chart').easyPieChart({
+                barColor: '#000000',
+                trackColor: '#e2dee7',
+                lineCap: 'round',
+                lineWidth: 30,
+                size: 320,
+                onStep: function (from, to, percent, red, green, blue) {
+                    $('.percent').text(Math.round(percent)).append("<span style='color:#999; font-size:15px; font-family:'NotoSansCJKkr-Light';>%</span>");
+                    $('.red').text(Math.ceil(red));
+                    $('.green').text(Math.ceil(green));
+                    $('.blue').text(Math.ceil(blue));
+                }
+            });
+            var chart = window.chart = $('.chart').data('easyPieChart');
+            $('.js_update').on('click', function() {
+                update();
+            });
+        });
+        function update(){
+            var rad = Math.floor(Math.random()*5)+1;
+            var params = "random=" + rad;
+            $.ajax({
+                type:"POST",
+                url:"./getColorData.php",
+                data:params,
+                success:function(args)  {
+                    var chart = window.chart = $('.chart').data('easyPieChart');
+                    $('.red').val(args.red);
+                    $('.green').val(args.green);
+                    $('.blue').val(args.blue);
+                    var sred = parseInt(args.red).toString(16);
+                    var sgreen = parseInt(args.green).toString(16);
+                    var sblue = parseInt(args.blue).toString(16);
+                    if(sred.length<2) sred = "0" + sred;
+                    if(sgreen.length<2) sgreen = "0" + sgreen;
+                    if(sblue.length<2) sblue = "0" + sblue;
+                    var newColor = "#" + sred + sgreen + sblue;
+                    chart.options.barColor = newColor;
+                    chart.update(args.lightness);
+                },
+                error:function(xhr,status,error)    {
+                    console.log(error);
+                }
+            });
+            return;
+        }
+    </script>
+</body>
+</html>
