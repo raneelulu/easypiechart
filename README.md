@@ -28,7 +28,7 @@ And Here is the db connect flow chart.
 If you click "UPDATE CHART" button, the chart get a new random color's information(R,G,B and Lightness values) with ajax.
 
 > main.html
-```
+``` javascript
 function update(){
     var rad = Math.floor(Math.random()*5)+1;
     var params = "random=" + rad;
@@ -59,7 +59,7 @@ function update(){
 
     There are lots of elements at easy-pie-chart. To change the chart's elements, you can do like this
     >main.html
-    ```
+    ``` javascript
     var chart = window.chart = $('.chart').data('easyPieChart');    // select the chart
     chart.options.barColor = newColor;  // change the barColor
     ```
@@ -74,7 +74,7 @@ function update(){
 
         You can make more(and many) number counters with easy-pie-chart
     >jquery.easypiechart.js
-    ```
+    ``` javascript
     // options.easing(this, process, start value, the amount to change, options.animate.duration)
     var red = options.easing(this, process, 0, parseInt($('.red').val()), options.animate.duration);
     var green = options.easing(this, process, 0, parseInt($('.green').val()), options.animate.duration);
@@ -83,7 +83,7 @@ function update(){
 
     ```
     >main.html
-    ```
+    ``` javascript
     // write the changing values
     // if you want to adjust the values, then you can use Math functions.
     onStep: function (from, to, percent, red, green, blue) {
