@@ -50,7 +50,7 @@ function update(){
 
 <http://13.125.250.182/easypiechart/main.html>
 
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/39694718/48434919-6b9c2d80-e7be-11e8-888e-c5ea471a0553.gif)
+<img width="250px" src="https://user-images.githubusercontent.com/39694718/48464368-b18add00-e822-11e8-883e-387d9a254d81.gif">
 
 ### How to change the chart
 
